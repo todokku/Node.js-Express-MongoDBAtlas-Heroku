@@ -49,7 +49,13 @@ router.delete('/:productId', async (req, res) => {
 //修改数据
 router.patch('/:productId', async (req, res) => {
     try {
-        const updateProduct = await Product.updateOne({ _id: req.params.productId }, { $set: { title: req.body.title } })
+        const updateProduct = await Product.updateOne({ 
+            _id: req.params.productId }, 
+            { $set: { name: req.body.name,
+                price: req.body.price,
+                remaining: req.body.remaining,
+                src: req.body.src,
+                type: req.body.type, } })
         res.json(updateProduct)
     } catch (err) {
         res.json({ message: err })
