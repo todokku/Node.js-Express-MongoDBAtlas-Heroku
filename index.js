@@ -4,6 +4,7 @@ var cors = require('cors');
 const mongoose = require("mongoose")
 const postRoute = require('./routes/posts')
 const productRoute = require('./routes/products')
+const orderRoute = require('./routes/orders')
 const bodyParser = require('body-parser')
 
 app.use(
@@ -41,3 +42,4 @@ const connectDB = async () => {
 connectDB()
 app.use('/posts',postRoute)
 app.use('/products',productRoute)
+app.use('/orders',orderRoute)
