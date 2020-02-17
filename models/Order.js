@@ -16,6 +16,12 @@ const OrderSchema = mongoose.Schema({
         type:Object,
         required:true
     },
+    totalPrice:{
+        type:Number
+    },
+    discountPrice:{
+        type:Number
+    },
     paymentStatus:{
         type:Boolean,
         required:true
