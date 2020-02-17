@@ -18,6 +18,8 @@ router.post('/', async (req, res) => {
         date:req.body.date,
         cart: req.body.cart,
         form: req.body.form,
+        totalPrice:req.body.totalPrice,
+        discountPrice:req.body.discountPrice,
         paymentStatus:req.body.paymentStatus,
     })
     try {
