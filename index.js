@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const postRoute = require('./routes/posts')
 const productRoute = require('./routes/products')
 const orderRoute = require('./routes/orders')
+const couponRoute = require('./routes/coupons')
 const bodyParser = require('body-parser')
 
 app.use(
@@ -43,3 +44,4 @@ connectDB()
 app.use('/posts',postRoute)
 app.use('/products',productRoute)
 app.use('/orders',orderRoute)
+app.use('/coupons',couponRoute)
