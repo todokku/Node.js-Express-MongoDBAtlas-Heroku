@@ -1,13 +1,17 @@
 const express = require('express');
-const app = express();
-var cors = require('cors');
-const mongoose = require("mongoose")
+const cors = require('cors');
+const bodyParser = require('body-parser')
+require("dotenv").config()
+const connectDB = require('./config/db')
+
 const postRoute = require('./routes/posts')
 const productRoute = require('./routes/products')
 const orderRoute = require('./routes/orders')
 const couponRoute = require('./routes/coupons')
-const bodyParser = require('body-parser')
+const user = require("./routes/user"); 
 
+connectDB()
+const app = express();
 app.use(
     cors({
         credentials: true,
@@ -24,24 +28,10 @@ app.listen(process.env.PORT || 3000, function() {
 
 app.use(bodyParser.json())
 
-require("dotenv/config")
 
-const db = process.env.MONGODB_URL;
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(db, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true
-    });
-    console.log("MongoDB is Connected...");
-  } catch (err) {
-    console.error(err.message);
-    process.exit(1);
-  }
-};
-connectDB()
 app.use('/posts',postRoute)
 app.use('/products',productRoute)
 app.use('/orders',orderRoute)
 app.use('/coupons',couponRoute)
+app.use("/user", user);
